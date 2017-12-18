@@ -8,9 +8,11 @@ extra options,
 ```javascript
 {
     textColor: <color-of-text, default is black>
-    text: <text>
+    text: <text>,
+    fontSize: <number, default is radius>
 }
 ```
+
 
 
 

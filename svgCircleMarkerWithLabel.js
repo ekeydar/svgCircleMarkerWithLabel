@@ -26,7 +26,7 @@ L.CircleMarkerWithLabel = L.CircleMarker.extend({
             this._textElement.setAttribute("y", this._point.y);
             this._textElement.setAttribute('alignment-baseline','middle');
             this._textElement.setAttribute("fill", this.options.textColor || "black");
-            this._textElement.setAttribute("font-size",this.getRadius());
+            this._textElement.setAttribute("font-size",this.options.fontSize || this.getRadius());
         }
 	},
     setText: function(text) {
