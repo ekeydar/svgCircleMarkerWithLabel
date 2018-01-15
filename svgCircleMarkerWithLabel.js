@@ -22,6 +22,7 @@ L.CircleMarkerWithLabel = L.CircleMarker.extend({
 	_redrawTextElement: function() {
     	this._textElement.textContent = this._text;
     	if (this._point) {
+            this._textElement.setAttribute("class", "circle-with-marker-text");
             this._textElement.setAttribute("x", this._point.x);
             this._textElement.setAttribute("y", this._point.y);
             this._textElement.setAttribute('alignment-baseline','middle');
