@@ -6,10 +6,15 @@ L.CircleMarkerWithLabel = L.CircleMarker.extend({
 	te.textContent = this._text;
 	te.setAttribute("text-anchor","middle");
     },
+    bringToFront: function() {
+	L.CircleMarker.prototype.bringToFront.call(this);
+	this._reorder();
+    },
     onAdd: function() {
     	L.CircleMarker.prototype.onAdd.call(this);
     	this._redrawTextElement();
     	this._renderer._rootGroup.appendChild(this._textElement);
+	this._reorder();
     },
     onRemove: function() {
     	L.CircleMarker.prototype.onRemove.call(this);
@@ -29,6 +34,13 @@ L.CircleMarkerWithLabel = L.CircleMarker.extend({
             this._textElement.setAttribute("fill", this.options.textColor || "black");
             this._textElement.setAttribute("font-size",this.options.fontSize || this.getRadius());
         }
+	this._reorder();
+    },
+    _reorder: function() {
+	let te = this._textElement;
+	if (te && te.parentElement) {
+	    te.parentElement.appendChild(te);
+	}
     },
     setText: function(text) {
         this.options.text = this._text = text;
